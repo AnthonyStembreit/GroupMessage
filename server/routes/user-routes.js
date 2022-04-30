@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Message, Conversation, UserConversation } = require('../models');
 
-router.post("/api/signup", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         let newUser = await User.findOrCreate({
             where: { email: req.body.email },
@@ -12,5 +12,18 @@ router.post("/api/signup", async (req, res) => {
         console.log(error)
     }
 })
-
+router.get("/", async (req, res) => {
+    try {
+        let allUsers = await UserConversation.findAll({
+            where: {
+                user_id: 1
+            },
+            include: [{model:Conversation, include:[{model:Message, include: [User]}]}]
+        });
+        //{include:[Message, {model:UserConversation, include: [{model:Conversation, include:[Message]}]}]}
+        res.json(allUsers)
+    } catch (error) {
+        console.log(error)
+    }
+})
 module.exports = router
