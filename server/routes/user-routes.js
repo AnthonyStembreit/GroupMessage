@@ -18,7 +18,32 @@ router.get("/", async (req, res) => {
             where: {
                 user_id: 1
             },
-            include: [{model:Conversation, include:[{model:Message, include: [User]}]}]
+            attributes: ["user_id"],
+            include: [{
+                model: Conversation,
+                attributes: ["id", "updatedAt"],
+                include: [
+                    {
+                        model: UserConversation,
+                        include: [
+                            {
+                                model: User,
+                                attributes: ["name"]
+                            }
+                        ],
+                        attributes: ["id"]
+                    },
+                    {
+                        model: Message,
+                        include: [
+                            {
+                                model: User,
+                                attributes: ["name"]
+                            }
+                        ],
+                        attributes: ["createdAt", "body"]
+                    }]
+            }]
         });
         //{include:[Message, {model:UserConversation, include: [{model:Conversation, include:[Message]}]}]}
         res.json(allUsers)

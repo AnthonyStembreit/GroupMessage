@@ -5,7 +5,21 @@ Message.init({
     body: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'User',
+            key: 'id',
+        },
+    },
+    conversation_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'Conversation',
+            key: 'id',
+        },
+    },
 }, {
     sequelize,
     timestamps: true,
