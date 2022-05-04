@@ -8,6 +8,8 @@ Changed the relationships between Conversation, User, and UserConversation to us
     through: UserConversation,
     foreignKey: 'user_id'
 })`
+
+
 `Conversation.belongsToMany(User, {
     through: UserConversation,
     foreignKey: 'conversation_id'
