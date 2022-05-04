@@ -14,31 +14,27 @@ router.post("/", async (req, res) => {
 })
 router.get("/", async (req, res) => {
     try {
-        let allUsers = await UserConversation.findAll({
+        let allUsers = await User.findOne({
             where: {
-                user_id: 1
+                id: 1
             },
-            attributes: ["user_id"],
+            attributes: ["name", "email", "id"],
             include: [{
                 model: Conversation,
+                through: {model: UserConversation, attributes:[]},
                 attributes: ["id", "updatedAt"],
                 include: [
                     {
-                        model: UserConversation,
-                        include: [
-                            {
-                                model: User,
-                                attributes: ["name"]
-                            }
-                        ],
-                        attributes: ["id"]
+                        model: User,
+                        attributes: ["name",],
+                        through: {model: UserConversation, attributes:[]},
                     },
                     {
                         model: Message,
                         include: [
                             {
                                 model: User,
-                                attributes: ["name"]
+                                attributes: ["name", "id"]
                             }
                         ],
                         attributes: ["createdAt", "body"]

@@ -2,24 +2,24 @@ const { UserConversation } = require('../models');
 
 const userConversationData = [
     {
-        UserId: 1,
-        ConversationId: 1
+        user_id: 1,
+        conversation_id: 1
     },
     {
-        UserId: 2,
-        ConversationId: 1
+        user_id: 2,
+        conversation_id: 1
     },
     {
-        UserId: 1,
-        ConversationId: 2
+        user_id: 1,
+        conversation_id: 2
     },
     {
-        UserId: 2,
-        ConversationId: 2
+        user_id: 2,
+        conversation_id: 2
     },
     {
-        UserId: 3,
-        ConversationId: 2
+        user_id: 3,
+        conversation_id: 2
     },
 ];
 
