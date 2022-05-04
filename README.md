@@ -1,6 +1,6 @@
 # GroupMessage
 
-Back-end application to experiment with database structure for group messaging base on [this](https://dev.to/yuesu/a-simple-database-modelling-for-a-web-based-messenger-with-sequelize-and-postgresdb-ch8) set up.
+Back-end application to experiment with database structure for group messaging based on [this](https://dev.to/yuesu/a-simple-database-modelling-for-a-web-based-messenger-with-sequelize-and-postgresdb-ch8) set up.
 
 Changed the relationships between Conversation, User, and UserConversation to use .belongsToMany().
 
